@@ -151,3 +151,66 @@ function howManydays(month) {
   }
   return days
 }
+
+// Solution for the nineth basic task
+
+function padIt(str, n) {
+  var a = 0
+  do {
+    a++
+    if (a % 2) {
+      str = "*" + str
+    } else {
+      str = str + "*"
+    }
+  } while (a <= n)
+  return str
+}
+
+// Solution for the tenth basic task
+
+function pickIt(arr) {
+  var odd = [],
+    even = []
+  //coding here
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2) {
+      odd.push(arr[i])
+    } else even.push(arr[i])
+  }
+  return [odd, even]
+}
+
+// Solution for the eleventh basic task
+
+function grabDoll(dolls) {
+  var bag = []
+  //coding here
+
+  for (var i = 0; i < dolls.length; i++) {
+    if (bag.length === 3) break
+    if (dolls[i] === "Hello Kitty" || dolls[i] === "Barbie doll") {
+      bag.push(dolls[i])
+    } else {
+      continue
+    }
+  }
+
+  return bag
+}
+
+// Solution for the twelfth basic task
+
+function giveMeFive(obj) {
+  //coding here
+  var five = []
+  for (var i in obj) {
+    if (i.length === 5) {
+      five.push(i)
+    }
+    if (obj.i.length === 5) {
+      five.push(obj.i)
+    }
+  }
+  return five
+}
