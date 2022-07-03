@@ -108,3 +108,41 @@ function dirReduc(arr) {
   }
   return result;
 }
+
+// Moving Zeros To The End 5 kyu
+
+function moveZeros(arr) {
+  const zeroStore = [];
+  const newArr = arr.filter((v) => {
+    if (v === 0) {
+      zeroStore.push(0);
+    } else return true;
+  });
+  return [...newArr, ...zeroStore];
+}
+
+// Pete, the baker 5 kyu
+
+function cakes(recipe, available) {
+  const counter = [];
+  Object.keys(recipe).map((v) => {
+    counter.push((available[v] | 0) / recipe[v]);
+  });
+
+  return Math.floor(counter.sort()[0]);
+}
+
+// Human Readable Time 5 kyu
+
+function humanReadable(seconds) {
+  const secs = seconds % 60 | "00";
+  const minutes = Math.floor((seconds / 60) % 60) | "00";
+  const hours = Math.floor(seconds / 3600) | "00";
+  return `${
+    hours ? (hours.toString().length === 2 ? hours : "0" + hours) : "00"
+  }:${
+    minutes ? (minutes.toString().length === 2 ? minutes : "0" + minutes) : "00"
+  }:${secs ? (secs.toString().length === 2 ? secs : "0" + secs) : "00"}`;
+}
+
+console.log(humanReadable(359999)); // must return'00:00:00'
