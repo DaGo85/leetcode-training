@@ -145,4 +145,56 @@ function humanReadable(seconds) {
   }:${secs ? (secs.toString().length === 2 ? secs : "0" + secs) : "00"}`;
 }
 
-console.log(humanReadable(359999)); // must return'00:00:00'
+// Sum of Digits / Digital Root 6 kyu
+
+function digital_root(n) {
+  let result = n;
+  while (result > 9) {
+    const numberArray = Array.from(result.toString()).map(Number);
+
+    result = numberArray.reduce((a, b) => a + b, 0);
+  }
+
+  return result;
+}
+
+// Find the unique number 6 kyu
+
+function findUniq(arr) {
+  const arrSet = new Set(arr);
+  let counter = {};
+
+  arrSet.forEach((v) => (counter[v] = 0));
+
+  arr.forEach((v) => (counter[v] += 1));
+
+  const uniqueKey = Object.keys(counter).reduce((a, b) => {
+    return counter[b] < counter[a] ? b : a;
+  });
+
+  return Number(uniqueKey);
+}
+
+function findUniq2(arr) {
+  return arr.find((v) => arr.indexOf(v) === arr.lastIndexOf(v));
+}
+
+// Strip Comments 4 kyu
+
+function solution(input, markers) {
+  let result = input.split("\n");
+
+  markers.forEach((v) => {
+    result.forEach((u, i) => {
+      if (u.indexOf(v) >= 0) {
+        result[i] = u.substr(0, u.indexOf(v)).trim();
+      }
+    });
+  });
+  return result.join("\n");
+}
+
+console.log(
+  "output:   " +
+    solution(`apples, pears # and bananas\ngrapes\nbananas !apples`, ["#", "!"])
+); // result should == "apples, pears\ngrapes\nbananas"
